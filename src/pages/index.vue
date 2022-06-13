@@ -1,46 +1,58 @@
 <script setup lang="ts">
-const name = $ref('')
+import AdbWebUsbBackend, { AdbWebUsbBackendWatcher } from '@yume-chan/adb-backend-webusb'
+import type { AdbBackend } from '@yume-chan/adb'
+// 当前浏览器是否支持
+const supported = ref(false)
+// 获取到的 adb 设备列表
+const backendList = ref<AdbBackend[]>()
+// 当前选择的 adb 设备
+const selectedBackend = ref<AdbBackend>()
 
-const router = useRouter()
+function init() {
+  supported.value = AdbWebUsbBackend.isSupported()
+  if (!supported.value) {
+    console.error('Your browser does not support WebUSB standard, which is required for this site to work.\n\nLatest version of Google Chrome, Microsoft Edge, or other Chromium-based browsers are required.')
+    return
+  }
+
+  updateUsbBackendList()
+
+  const watcher = new AdbWebUsbBackendWatcher(async (serial?: string) => {
+    const list = await updateUsbBackendList()
+
+    if (serial)
+      selectedBackend.value = list.find(backend => backend.serial === serial)
+  })
+
+  onUnmounted(() => watcher.dispose())
+}
+
+async function updateUsbBackendList() {
+  const _backendList = await AdbWebUsbBackend.getDevices()
+  backendList.value = _backendList
+
+  return _backendList
+}
+
+init()
+
 const go = () => {
-  if (name)
-    router.push(`/hi/${encodeURIComponent(name)}`)
+
 }
 </script>
 
 <template>
   <div>
-    <div i-carbon-campsite text-4xl inline-block />
-    <p>
-      <a rel="noreferrer" href="https://github.com/antfu/vitesse-lite" target="_blank">
-        Vitesse Lite
-      </a>
-    </p>
-    <p>
-      <em text-sm op75>Opinionated Vite Starter Template</em>
-    </p>
-
-    <div py-4 />
-
-    <input
-      id="input"
-      v-model="name"
-      placeholder="What's your name?"
-      type="text"
-      autocomplete="false"
-      p="x-4 y-2"
-      w="250px"
-      text="center"
-      bg="transparent"
-      border="~ rounded gray-200 dark:gray-700"
-      outline="none active:none"
-      @keydown.enter="go"
-    >
+    <p>{{ supported ? '当前浏览器支持' : '当前浏览器不支持' }}</p>
+    <template v-if="backendList">
+      <div v-for="item in backendList" :key="item.serial">
+        {{ item }}
+      </div>
+    </template>
 
     <div>
       <button
         class="m-3 text-sm btn"
-        :disabled="!name"
         @click="go"
       >
         Go

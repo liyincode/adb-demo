@@ -8,6 +8,8 @@ specifiers:
   '@vitejs/plugin-vue': ^2.3.3
   '@vue/test-utils': ^2.0.0
   '@vueuse/core': ^8.6.0
+  '@yume-chan/adb': ^0.0.16
+  '@yume-chan/adb-backend-webusb': ^0.0.16
   eslint: ^8.16.0
   jsdom: ^19.0.0
   pnpm: ^7.1.7
@@ -24,6 +26,8 @@ specifiers:
 
 dependencies:
   '@vueuse/core': 8.6.0_vue@3.2.36
+  '@yume-chan/adb': 0.0.16
+  '@yume-chan/adb-backend-webusb': 0.0.16
   vue: 3.2.36
   vue-router: 4.0.15_vue@3.2.36
 
@@ -332,6 +336,10 @@ packages:
   /@types/unist/2.0.6:
     resolution: {integrity: sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==}
     dev: true
+
+  /@types/w3c-web-usb/1.0.6:
+    resolution: {integrity: sha512-cSjhgrr8g4KbPnnijAr/KJDNKa/bBa+ixYkywFRvrhvi9n1WEl7yYbtRyzE6jqNQiSxxJxoAW3STaOQwJHndaw==}
+    dev: false
 
   /@typescript-eslint/eslint-plugin/5.26.0_hzuh7e2up357pvq3mkokjvu2lq:
     resolution: {integrity: sha512-oGCmo0PqnRZZndr+KwvvAUvD3kNE4AfyoGCwOZpoCncSh4MVD06JTE8XQa2u9u+NX5CsyZMBTEc2C72zx38eYA==}
@@ -691,6 +699,7 @@ packages:
     dependencies:
       '@vue/reactivity': 3.2.36
       '@vue/shared': 3.2.36
+    dev: false
 
   /@vue/runtime-dom/3.2.36:
     resolution: {integrity: sha512-gYPYblm7QXHVuBohqNRRT7Wez0f2Mx2D40rb4fleehrJU9CnkjG0phhcGEZFfGwCmHZRqBCRgbFWE98bPULqkg==}
@@ -698,6 +707,7 @@ packages:
       '@vue/runtime-core': 3.2.36
       '@vue/shared': 3.2.36
       csstype: 2.6.17
+    dev: false
 
   /@vue/server-renderer/3.2.36_vue@3.2.36:
     resolution: {integrity: sha512-uZE0+jfye6yYXWvAQYeHZv+f50sRryvy16uiqzk3jn8hEY8zTjI+rzlmZSGoE915k+W/Ol9XSw6vxOUD8dGkUg==}
@@ -707,6 +717,7 @@ packages:
       '@vue/compiler-ssr': 3.2.36
       '@vue/shared': 3.2.36
       vue: 3.2.36
+    dev: false
 
   /@vue/shared/3.2.36:
     resolution: {integrity: sha512-JtB41wXl7Au3+Nl3gD16Cfpj7k/6aCroZ6BbOiCMFCMvrOpkg/qQUXTso2XowaNqBbnkuGHurLAqkLBxNGc1hQ==}
@@ -734,9 +745,11 @@ packages:
       '@vueuse/shared': 8.6.0_vue@3.2.36
       vue: 3.2.36
       vue-demi: 0.12.1_vue@3.2.36
+    dev: false
 
   /@vueuse/metadata/8.6.0:
     resolution: {integrity: sha512-F+CKPvaExsm7QgRr8y+ZNJFwXasn89rs5wth/HeX9lJ1q8XEt+HJ16Q5Sxh4rfG5YSKXrStveVge8TKvPjMjFA==}
+    dev: false
 
   /@vueuse/shared/8.6.0_vue@3.2.36:
     resolution: {integrity: sha512-Y/IVywZo7IfEoSSEtCYpkVEmPV7pU35mEIxV7PbD/D3ly18B3mEsBaPbtDkNM/QP3zAZ5mn4nEkOfddX4uwuIA==}
@@ -751,6 +764,53 @@ packages:
     dependencies:
       vue: 3.2.36
       vue-demi: 0.12.1_vue@3.2.36
+    dev: false
+
+  /@yume-chan/adb-backend-webusb/0.0.16:
+    resolution: {integrity: sha512-BJ9gUKXaYrXG9rxW3kbI8yBFVSnQuIkUgPUs4GDvXRxtiEn0Snidqw1HhJBF78LPvqZSAcxfiU8mfB61s2ERWw==}
+    dependencies:
+      '@types/w3c-web-usb': 1.0.6
+      '@yume-chan/adb': 0.0.16
+      '@yume-chan/struct': 0.0.16
+      tslib: 2.4.0
+    dev: false
+
+  /@yume-chan/adb/0.0.16:
+    resolution: {integrity: sha512-+5q4d3q+rP8rbtv8pqfMX0Ln749TjHmJ75a/yZiEdlNdYIV7Oi+ZeEs43hd70dJs3wHnlwM/uLUaz93wdz4eSA==}
+    dependencies:
+      '@yume-chan/async': 2.2.0
+      '@yume-chan/dataview-bigint-polyfill': 0.0.16
+      '@yume-chan/event': 0.0.16
+      '@yume-chan/struct': 0.0.16
+      tslib: 2.4.0
+      web-streams-polyfill: 4.0.0-beta.3
+    dev: false
+
+  /@yume-chan/async/2.2.0:
+    resolution: {integrity: sha512-jatCtX1/3DsR9Vt3EB8CGFy0MNrXP5f+eNiRGHLH+LkYz7MPLzpqL/DnvXSip+Z0EKBCDnzuNuELjsKEEzcdQA==}
+    dependencies:
+      tslib: 2.4.0
+    dev: false
+
+  /@yume-chan/dataview-bigint-polyfill/0.0.16:
+    resolution: {integrity: sha512-fvo4fclUgoPwO8dkRCEjce6efV5mnyJBNjiq3VYCUkXcuzb2anvbedIihuFpajhlDQ31GAKTnkQYFHpSOhzHqA==}
+    dependencies:
+      tslib: 2.4.0
+    dev: false
+
+  /@yume-chan/event/0.0.16:
+    resolution: {integrity: sha512-bZ8B1oM2s4nKRtG2O2rQIRbiLBSl6HMeJnFqKdZ1in6tDNq3t9NJopOwzR/DUUvadCaa8KjEHIcyC2E2XnEEpQ==}
+    dependencies:
+      '@yume-chan/async': 2.2.0
+      tslib: 2.4.0
+    dev: false
+
+  /@yume-chan/struct/0.0.16:
+    resolution: {integrity: sha512-RNEn3KPk6i0NkkoQE1xAPUYDp6Afqes1VYkmJIW6fGCmZqWTHUy0tH8qa6qMmfYaTK5sdcH77M0EyvifDxmzUA==}
+    dependencies:
+      '@yume-chan/dataview-bigint-polyfill': 0.0.16
+      tslib: 2.4.0
+    dev: false
 
   /abab/2.0.5:
     resolution: {integrity: sha512-9IK9EadsbHo6jLWIpxpR6pL0sazTXV6+SQv25ZB+F7Bj9mJNaOc4nCRabwd5M/JwmUa8idz6Eci6eKfJryPs6Q==}
@@ -1108,6 +1168,7 @@ packages:
 
   /csstype/2.6.17:
     resolution: {integrity: sha512-u1wmTI1jJGzCJzWndZo8mk4wnPTZd1eOIYTYvuEyOQGfmDl3TrabCCfKnOC86FZwW/9djqTl933UF/cS425i9A==}
+    dev: false
 
   /data-urls/3.0.1:
     resolution: {integrity: sha512-Ds554NeT5Gennfoo9KN50Vh6tpgtvYEwraYjejXnyTpu1C7oXKxdFk75REooENHE8ndTVOJuv+BEs4/J/xcozw==}
@@ -3504,6 +3565,10 @@ packages:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
     dev: true
 
+  /tslib/2.4.0:
+    resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
+    dev: false
+
   /tsutils/3.21.0_typescript@4.7.2:
     resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==}
     engines: {node: '>= 6'}
@@ -3827,6 +3892,7 @@ packages:
         optional: true
     dependencies:
       vue: 3.2.36
+    dev: false
 
   /vue-eslint-parser/9.0.2_eslint@8.16.0:
     resolution: {integrity: sha512-uCPQwTGjOtAYrwnU+76pYxalhjsh7iFBsHwBqDHiOPTxtICDaraO4Szw54WFTNZTAEsgHHzqFOu1mmnBOBRzDA==}
@@ -3873,6 +3939,7 @@ packages:
       '@vue/runtime-dom': 3.2.36
       '@vue/server-renderer': 3.2.36_vue@3.2.36
       '@vue/shared': 3.2.36
+    dev: false
 
   /w3c-hr-time/1.0.2:
     resolution: {integrity: sha512-z8P5DvDNjKDoFIHK7q8r8lackT6l+jo/Ye3HOle7l9nICP9lf1Ci25fy9vHd0JOWewkIFzXIEig3TdKT7JQ5fQ==}
@@ -3886,6 +3953,11 @@ packages:
     dependencies:
       xml-name-validator: 4.0.0
     dev: true
+
+  /web-streams-polyfill/4.0.0-beta.3:
+    resolution: {integrity: sha512-QW95TCTaHmsYfHDybGMwO5IJIM93I/6vTRk+daHTWFPhwh+C8Cg7j7XyKrwrj8Ib6vYXe0ocYNrmzY4xAAN6ug==}
+    engines: {node: '>= 14'}
+    dev: false
 
   /webidl-conversions/7.0.0:
     resolution: {integrity: sha512-VwddBukDzu71offAQR975unBIGqfKZpM+8ZX6ySk8nYhVoo5CYaZyzt3YBvYtRtO+aoGlqxPg/B87NGVZ/fu6g==}

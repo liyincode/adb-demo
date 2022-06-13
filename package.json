@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@vueuse/core": "^8.6.0",
+    "@yume-chan/adb": "^0.0.16",
+    "@yume-chan/adb-backend-webusb": "^0.0.16",
     "vue": "^3.2.36",
     "vue-router": "^4.0.15"
   },
