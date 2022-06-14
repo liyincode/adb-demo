@@ -10,6 +10,7 @@ specifiers:
   '@vueuse/core': ^8.6.0
   '@yume-chan/adb': ^0.0.16
   '@yume-chan/adb-backend-webusb': ^0.0.16
+  '@yume-chan/adb-credential-web': ^0.0.16
   eslint: ^8.16.0
   jsdom: ^19.0.0
   pnpm: ^7.1.7
@@ -28,6 +29,7 @@ dependencies:
   '@vueuse/core': 8.6.0_vue@3.2.36
   '@yume-chan/adb': 0.0.16
   '@yume-chan/adb-backend-webusb': 0.0.16
+  '@yume-chan/adb-credential-web': 0.0.16
   vue: 3.2.36
   vue-router: 4.0.15_vue@3.2.36
 
@@ -772,6 +774,13 @@ packages:
       '@types/w3c-web-usb': 1.0.6
       '@yume-chan/adb': 0.0.16
       '@yume-chan/struct': 0.0.16
+      tslib: 2.4.0
+    dev: false
+
+  /@yume-chan/adb-credential-web/0.0.16:
+    resolution: {integrity: sha512-W2Gfq/KoUhlHQc8joIWcEfGu/AGKTlZ+EW+AwVCB9tK7u3iMjJEwYsFdNwciAzwGpJAjUiiCSFs6H5+Sa/4ODQ==}
+    dependencies:
+      '@yume-chan/adb': 0.0.16
       tslib: 2.4.0
     dev: false
 
